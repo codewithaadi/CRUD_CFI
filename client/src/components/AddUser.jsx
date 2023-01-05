@@ -23,7 +23,6 @@ export default function AddUser() {
 
   const onValueChange = (e)=>{
       setUser({...user, [e.target.name] : e.target.value});
-      console.log(e);
   }
 
   const addUserDetails = async ()=> {
@@ -32,26 +31,26 @@ export default function AddUser() {
 
   return (
     <Container>
-      <Typography variant='h4'>Add User</Typography>
-      <FormControl>
-        <InputLabel onChange={(e)=>onValueChange(e)} name="name">Name</InputLabel>
-        <Input />
-      </FormControl>
-      <FormControl>
-        <InputLabel onChange={(e)=>onValueChange(e)} name="username">UserName</InputLabel>
-        <Input />
-      </FormControl>
-      <FormControl>
-        <InputLabel onChange={(e)=>onValueChange(e)} name="email">Email</InputLabel>
-        <Input />
-      </FormControl>
-      <FormControl>
-        <InputLabel onChange={(e)=>onValueChange(e)} name="phone">Phone</InputLabel>
-        <Input />
-      </FormControl>
-      <FormControl>
-        <Button variant='contained' onClick={()=> addUserDetails}>Add User</Button>
-      </FormControl>
+      <Typography variant="h4">Add User</Typography>
+            <FormControl>
+                <InputLabel htmlFor="my-input">Name</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='name'  id="my-input" />
+            </FormControl>
+            <FormControl>
+                <InputLabel htmlFor="my-input">Username</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='username'  id="my-input" />
+            </FormControl>
+            <FormControl>
+                <InputLabel htmlFor="my-input">Email</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='email'  id="my-input"/>
+            </FormControl>
+            <FormControl>
+                <InputLabel htmlFor="my-input">Phone</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='phone' id="my-input" />
+            </FormControl>
+            <FormControl>
+                <Button variant="contained" color="primary" onClick={() => addUserDetails()}>Add User</Button>
+            </FormControl>
     </Container>
   )
 }
