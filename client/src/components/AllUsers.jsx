@@ -8,7 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { styled, Button } from "@mui/material";
 
-import { getUsers } from "../service/api";
+import { getUsers,deleteUser } from "../service/api";
 import { Link } from "react-router-dom";
 
 const StyledTable = styled(Table)`
@@ -33,12 +33,18 @@ export default function AllUsers() {
 
   useEffect(() => {
     getAllUsers();
-  }, []);
+  },[]);
 
   const getAllUsers = async () => {
     const response = await getUsers();
     setUsers(response.data);
   };
+
+  const deleteTheUser = async (id)=>{
+      await deleteUser(id);
+      getAllUsers();
+  }
+
   return (
     <StyledTable>
       <TableHead>
@@ -52,7 +58,7 @@ export default function AllUsers() {
       </TableHead>
       <TableBody>
         {users.map((user) => (
-          <TBody>
+          <TBody key={user._id}>
             <TableCell>{user._id}</TableCell>
             <TableCell>{user.name}</TableCell>
             <TableCell>{user.username}</TableCell>
@@ -67,7 +73,7 @@ export default function AllUsers() {
               >
                 Edit
               </Button>
-              <Button variant="contained" color="secondary">
+              <Button variant="contained" color="secondary" onClick={()=> deleteTheUser(user._id)}>
                 Delete
               </Button>
             </TableCell>
