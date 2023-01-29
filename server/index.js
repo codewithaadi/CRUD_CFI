@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 app.use('/',Routes);
 
-const username = process.env.DB_USERNAME;
-const password = process.env.DB_PASSWORD;
+const username = "user";
+const password = "user123";
 const PORT= 8000;
 
 
